@@ -37,31 +37,31 @@ public enum HTTPMethod: String {
     case patch
 
     public var rawValue: String {
-        return "\(self)".uppercased()
+        switch self {
+        case .get: return "GET"
+        case .head: return "HEAD"
+        case .post: return "POST"
+        case .put: return "PUT"
+        case .delete: return "DELETE"
+        case .connect: return "CONNECT"
+        case .options: return "OPTIONS"
+        case .trace: return "TRACE"
+        case .patch: return "PATCH"
+        }
     }
 
     public init?(rawValue: String) {
-        switch rawValue.lowercased() {
-        case "get":
-            self = .get
-        case "head":
-            self = .head
-        case "post":
-            self = .post
-        case "put":
-            self = .put
-        case "delete":
-            self = .delete
-        case "connect":
-            self = .connect
-        case "options":
-            self = .options
-        case "trace":
-            self = .trace
-        case "patch":
-            self = .patch
-        default:
-            return nil
+        switch rawValue.uppercased() {
+        case "GET": self = .get
+        case "HEAD": self = .head
+        case "POST": self = .post
+        case "PUT": self = .put
+        case "DELETE": self = .delete
+        case "CONNECT": self = .connect
+        case "OPTIONS": self = .options
+        case "TRACE": self = .trace
+        case "PATCH": self = .patch
+        default: return nil
         }
     }
 }
@@ -72,6 +72,10 @@ extension HTTPMethod: ExpressibleByStringLiteral {
     public init(stringLiteral value: Self.StringLiteralType) {
         self.init(rawValue: value.lowercased())!
     }
+}
+
+extension HTTPMethod: CustomStringConvertible {
+    public var description: String { self.rawValue }
 }
 
 extension HTTPMethod: CaseIterable {}

@@ -15,7 +15,7 @@ final class HTTPMethodTests: XCTestCase {
         }
     }
 
-    func testRawValueInitialization() throws {
+    func testRawValueInitializer() throws {
         for method in HTTPMethod.allCases {
             let uppercased = try XCTUnwrap(HTTPMethod(rawValue: method.rawValue))
             let lowercased = try XCTUnwrap(HTTPMethod(rawValue: method.rawValue.lowercased()))
@@ -30,12 +30,15 @@ final class HTTPMethodTests: XCTestCase {
     }
 
     func testStringExpressible() throws {
-        let strings = ["get", "head", "post", "put", "delete", "connect", "options", "trace", "patch"]
+        let upper = ["GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
+        let lower = ["get", "head", "post", "put", "delete", "connect", "options", "trace", "patch"]
         let methods: [HTTPMethod] = [.get, .head, .post, .put, .delete, .connect, .options, .trace, .patch]
 
-        for (string, method) in zip(strings, methods) {
-            let created: HTTPMethod = HTTPMethod(stringLiteral: "\(string)")
-            XCTAssertEqual(created, method)
+        for (string, method) in zip(zip(upper, lower), methods) {
+            let lower: HTTPMethod = HTTPMethod(stringLiteral: "\(string.0)")
+            let upper: HTTPMethod = HTTPMethod(stringLiteral: "\(string.1)")
+            XCTAssertEqual(lower, method)
+            XCTAssertEqual(upper, method)
         }
     }
 }
