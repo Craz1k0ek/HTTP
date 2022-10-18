@@ -83,4 +83,3 @@ extension HTTPMethod: CaseIterable {}
 extension HTTPMethod: Equatable {}
 
 extension HTTPMethod: Hashable {}
-
