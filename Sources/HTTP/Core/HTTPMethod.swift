@@ -9,7 +9,7 @@
 /// to be performed for a given resource. Each of them implements
 /// a different semantic, but some common features are shared by a group
 /// of them: e.g. a request method can be safe, idempotent, or cacheable.
-public enum HTTPMethod: String {
+public enum HTTPMethod: String, Sendable {
     /// The GET method requests a representation of the specified resource.
     /// Requests using GET should only retrieve data.
     case `get`

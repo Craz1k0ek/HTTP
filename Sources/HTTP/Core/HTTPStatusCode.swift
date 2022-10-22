@@ -20,7 +20,7 @@
 ///
 /// A response not listed below is considered a non standard response,
 /// possibly custom to the server's software. It's defined as `.custom`.
-public enum HTTPStatusCode: RawRepresentable {
+public enum HTTPStatusCode: RawRepresentable, Sendable {
     public typealias RawValue = Int
 
     /// This interim response indicates that the client should continue

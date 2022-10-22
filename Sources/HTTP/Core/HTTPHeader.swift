@@ -5,7 +5,7 @@
 //  Created by Bram Kolkman on 18/10/2022.
 //
 
-public struct HTTPHeader: RawRepresentable {
+public struct HTTPHeader: RawRepresentable, Sendable {
     public typealias RawValue = String
 
     /// The name of the header.

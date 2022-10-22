@@ -8,7 +8,7 @@
 import Foundation
 
 /// Media types used in several HTTP headers.
-public struct MediaType: RawRepresentable {
+public struct MediaType: RawRepresentable, Sendable {
     public typealias RawValue = String
 
     /// The underlying value.
