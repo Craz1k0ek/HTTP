@@ -9,7 +9,7 @@ import XCTest
 @testable import HTTP
 
 final class StandardHTTPClientTests: XCTestCase {
-    let client = StandardHTTPClient()
+    var client = StandardHTTPClient()
 
     override class func setUp() {
         URLProtocol.registerClass(URLProtocolStub.self)
@@ -23,7 +23,7 @@ final class StandardHTTPClientTests: XCTestCase {
         let url = try XCTUnwrap(URL(string: "https://www.example.com/\(#function)"))
         let body = Data("Hello world".utf8)
 
-        URLProtocolStub.responses[url] = .success(body)
+        URLProtocolStub.responses[url] = .success((body, .ok))
         defer { URLProtocolStub.responses.removeValue(forKey: url) }
 
         let request = HTTPRequest(url: url)

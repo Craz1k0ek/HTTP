@@ -56,7 +56,7 @@ final class HTTPStatusCodeTests: XCTestCase {
         (503, .serviceUnavailable, "503 Service Unavailable"),
         (504, .gatewayTimeout, "504 Gateway Timeout"),
         (505, .httpVersionNotSupported, "505 HTTP Version Not Supported"),
-        (108, .custom(108), "108 Custom")
+        (600, .custom(600), "600 Custom")
     ]
 
     func testRawValues() {
@@ -85,6 +85,33 @@ final class HTTPStatusCodeTests: XCTestCase {
     func testDescription() {
         for test in tests {
             XCTAssertEqual(test.2, test.1.description)
+        }
+    }
+
+    func testComparable() {
+        for (index, test) in tests.enumerated() {
+            if index > 0 {
+                XCTAssertTrue(tests[index - 1].1 < test.1)
+                XCTAssertTrue(tests[index - 1].1 <= test.1)
+                XCTAssertFalse(tests[index - 1].1 == test.1)
+                XCTAssertTrue(test.1 > tests[index - 1].1)
+                XCTAssertTrue(test.1 >= tests[index - 1].1)
+            }
+
+            XCTAssertTrue(tests[index].1 == test.1)
+            XCTAssertTrue(tests[index].1 >= test.1)
+            XCTAssertTrue(tests[index].1 <= test.1)
+            XCTAssertFalse(tests[index].1 < test.1)
+            XCTAssertFalse(tests[index].1 > test.1)
+
+            if index < tests.count - 1 {
+                print(tests[index + 1].1, test.1)
+                XCTAssertTrue(tests[index + 1].1 > test.1)
+                XCTAssertTrue(tests[index + 1].1 >= test.1)
+                XCTAssertFalse(tests[index + 1].1 == test.1)
+                XCTAssertTrue(test.1 < tests[index + 1].1)
+                XCTAssertTrue(test.1 <= tests[index + 1].1)
+            }
         }
     }
 }
