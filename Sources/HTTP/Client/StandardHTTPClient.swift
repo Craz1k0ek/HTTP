@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A default HTTP client implementation.
 public struct StandardHTTPClient: HTTPClient {
     public var middleware: [Middleware]
     /// The underlying `URLSession`.

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// An HTTP request object.
 public struct HTTPRequest: @unchecked Sendable {
     /// The URL of the request.
     public let url: URL

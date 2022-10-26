@@ -105,7 +105,6 @@ final class HTTPStatusCodeTests: XCTestCase {
             XCTAssertFalse(tests[index].1 > test.1)
 
             if index < tests.count - 1 {
-                print(tests[index + 1].1, test.1)
                 XCTAssertTrue(tests[index + 1].1 > test.1)
                 XCTAssertTrue(tests[index + 1].1 >= test.1)
                 XCTAssertFalse(tests[index + 1].1 == test.1)

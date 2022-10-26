@@ -5,6 +5,7 @@
 //  Created by Bram Kolkman on 18/10/2022.
 //
 
+/// A container for HTTP headers.
 public struct HTTPHeader: RawRepresentable, Sendable {
     public typealias RawValue = String
 
@@ -73,5 +74,14 @@ extension HTTPHeader {
     /// - Parameter agent: The user agent.
     public static func userAgent(_ agent: String) -> HTTPHeader {
         HTTPHeader(name: "User-Agent", value: agent)
+    }
+}
+
+extension Array where Element == HTTPHeader {
+    /// Find the header by its name.
+    /// - Parameter name: The name of the header.
+    /// - Returns: The HTTP header if found, otherwise `nil`.
+    public subscript(name: String) -> HTTPHeader? {
+        first(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame })
     }
 }

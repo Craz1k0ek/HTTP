@@ -5,6 +5,7 @@
 //  Created by Bram Kolkman on 23/10/2022.
 //
 
+/// The middleware protocol is used to customise client behaviour.
 public protocol Middleware {
     /// Process the request before sending it.
     /// - Parameter request: The request to process.

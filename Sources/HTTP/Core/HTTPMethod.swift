@@ -5,6 +5,8 @@
 //  Created by Bram Kolkman on 16/10/2022.
 //
 
+/// Methods defined to be used by HTTP.
+///
 /// HTTP defines a set of request methods to indicate the desired action
 /// to be performed for a given resource. Each of them implements
 /// a different semantic, but some common features are shared by a group

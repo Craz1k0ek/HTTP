@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// An HTTP response object.
 public struct HTTPResponse: @unchecked Sendable {
     /// The original request of the response.
     public let originalRequest: HTTPRequest

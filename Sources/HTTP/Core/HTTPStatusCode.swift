@@ -5,6 +5,8 @@
 //  Created by Bram Kolkman on 16/10/2022.
 //
 
+/// Status codes defined to be used by HTTP.
+///
 /// HTTP response status codes indicate whether a specific HTTP request has
 /// been successfully completed.
 ///

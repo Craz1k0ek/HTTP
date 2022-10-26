@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Middleware to validate HTTP status codes.
 public struct StatusCodeValidationMiddleware: Middleware {
     /// The range of allowed status  codes.
     public let allowedStatusCodes: ClosedRange<HTTPStatusCode>
