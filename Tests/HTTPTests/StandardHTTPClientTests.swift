@@ -39,10 +39,7 @@ final class StandardHTTPClientTests: XCTestCase {
         defer { URLProtocolStub.responses.removeValue(forKey: url) }
 
         let request = HTTPRequest(url: url)
-        do {
-            _ = try await client.send(request: request)
-            XCTFail("Client is supposed to throw")
-        } catch {}
+        await XCTAssertAsyncThrowsError(try await client.send(request: request))
     }
 }
 
@@ -66,9 +63,6 @@ final class ExtraStandardHTTPClientTests: XCTestCase {
         defer { URLResponseStub.urls.removeAll(where: { $0 == url } )}
 
         let request = HTTPRequest(url: url)
-        do {
-            _ = try await client.send(request: request)
-            XCTFail("Client is supposed to throw")
-        } catch {}
+        await XCTAssertAsyncThrowsError(try await client.send(request: request))
     }
 }
