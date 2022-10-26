@@ -23,7 +23,7 @@ public struct HTTPResponse: @unchecked Sendable {
     ///   - statusCode: The status code.
     ///   - headers: The headers.
     ///   - body: The body.
-    public init(originalRequest: HTTPRequest, statusCode: HTTPStatusCode, headers: [HTTPHeader], body: Data) {
+    public init(originalRequest: HTTPRequest, statusCode: HTTPStatusCode, headers: [HTTPHeader] = [], body: Data = Data()) {
         self.originalRequest = originalRequest
         self.statusCode = statusCode
         self.headers = headers
@@ -44,6 +44,15 @@ public struct HTTPResponse: @unchecked Sendable {
             }
         }
         self.body = body
+    }
+
+    /// Attempt to decode the body to a `Decodable` type.
+    /// - Parameters:
+    ///   - type: The resulting type.
+    ///   - decoder: The decoder used to decode the type.
+    /// - Returns: A `DecodingError` when decoding fails.
+    public func decode<T: Decodable>(to type: T.Type, using decoder: JSONDecoder = .init()) throws -> T {
+        try decoder.decode(type, from: body)
     }
 }
 

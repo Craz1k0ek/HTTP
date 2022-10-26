@@ -7,16 +7,6 @@
 
 import Foundation
 
-extension URLError {
-    /// A bad status code error instance.
-    public static var badStatusCode: URLError.Code { .badStatusCode }
-}
-
-extension URLError.Code {
-    /// The error code for a bad status error.
-    static let badStatusCode: URLError.Code = URLError.Code(rawValue: -1046)
-}
-
 public struct StatusCodeValidationMiddleware: Middleware {
     /// The range of allowed status  codes.
     public let allowedStatusCodes: ClosedRange<HTTPStatusCode>
@@ -39,7 +29,7 @@ public struct StatusCodeValidationMiddleware: Middleware {
         guard allowedStatusCodes ~= response.statusCode else {
             throw URLError(.badStatusCode, userInfo: [
                 NSURLErrorKey: response.originalRequest.url,
-                "statusCode": response.statusCode
+                NSURLErrorStatusCodeKey: response.statusCode
             ])
         }
     }

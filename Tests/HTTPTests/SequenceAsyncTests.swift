@@ -17,7 +17,7 @@ final class SequenceAsyncTests: XCTestCase {
         }
 
         func update(number: Int) async throws {
-            try await Task.sleep(nanoseconds: (NSEC_PER_SEC / 2))
+            try await Task.sleep(nanoseconds: NSEC_PER_SEC / 2)
             self.number = number
         }
     }
@@ -36,7 +36,7 @@ final class SequenceAsyncTests: XCTestCase {
         private var _number: Int
         var number: Int {
             get async throws {
-                try await Task.sleep(nanoseconds: (NSEC_PER_SEC / 2))
+                try await Task.sleep(nanoseconds: NSEC_PER_SEC / 2)
                 return _number
             }
         }

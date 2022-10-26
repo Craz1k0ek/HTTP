@@ -45,7 +45,7 @@ extension Sequence {
     ///   the result is `initialResult`.
     ///
     /// - Complexity: O(*n*), where *n* is the length of the sequence.
-    @inlinable public func asyncReduce<Result>(into initialResult: Result, _ updateAccumulatingResult: (inout Result, Element) async throws -> ()) async rethrows -> Result {
+    @inlinable func asyncReduce<Result>(into initialResult: Result, _ updateAccumulatingResult: (inout Result, Element) async throws -> ()) async rethrows -> Result {
         var copy = initialResult
         for element in self {
             try await updateAccumulatingResult(&copy, element)
