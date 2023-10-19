@@ -13,6 +13,7 @@
 //  limitations under the License.
 
 /// A type used to process outgoing HTTP requests and incoming HTTP responses.
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 public protocol Middleware: Sendable {
     /// Process a request before sending it.
     /// - Parameter request: The HTTP request to process.
