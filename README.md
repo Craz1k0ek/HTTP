@@ -1,7 +1,8 @@
 # Networking
 
 The Networking package is created to improve the way HTTP calls are made using Swift, 
-and to support a more protocol oriented approach to networking. 
+and to support a more protocol oriented approach to networking. The package contains the _HTTP_ package,
+which contains core functionality to create your own network stack. 
 
 ## License
 
