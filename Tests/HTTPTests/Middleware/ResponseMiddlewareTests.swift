@@ -15,6 +15,7 @@
 @testable import HTTP
 import XCTest
 
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 private struct TestMiddleware: ResponseMiddleware {
     func process(response: HTTPResponse) async throws {
         guard response.statusCode == .accepted else {
@@ -23,6 +24,7 @@ private struct TestMiddleware: ResponseMiddleware {
     }
 }
 
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 final class ResponseMiddlewareTests: XCTestCase {
     var url: URL!
     private let middleware = TestMiddleware()

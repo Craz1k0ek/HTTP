@@ -13,12 +13,14 @@
 //  limitations under the License.
 
 /// A type used to process outgoing HTTP requests.
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 public protocol RequestMiddleware: Middleware {
     /// Process a request before sending it.
     /// - Parameter request: The HTTP request to process.
     func process(request: inout HTTPRequest) async throws
 }
 
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 extension RequestMiddleware {
     public func process(response: HTTPResponse) async throws {}
 }

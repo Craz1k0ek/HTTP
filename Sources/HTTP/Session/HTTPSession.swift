@@ -13,6 +13,7 @@
 //  limitations under the License.
 
 /// A type describing an HTTP session.
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 public protocol HTTPSession: Sendable {
     /// Fetch an HTTP response from a server by sending an HTTP request.
     /// - Parameter request: The request to send.
@@ -20,6 +21,7 @@ public protocol HTTPSession: Sendable {
     func response(for request: HTTPRequest) async throws -> HTTPResponse
 }
 
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 public extension HTTPSession {
     /// Fetch an HTTP response from a server by sending an HTTP request.
     /// - Parameters:

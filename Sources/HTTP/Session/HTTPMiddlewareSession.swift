@@ -13,6 +13,7 @@
 //  limitations under the License.
 
 /// A type describing an HTTP session with middleware.
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 public protocol HTTPMiddlewareSession: HTTPSession, Sendable {
     /// The middleware of the session.
     var middleware: [Middleware] { get set }

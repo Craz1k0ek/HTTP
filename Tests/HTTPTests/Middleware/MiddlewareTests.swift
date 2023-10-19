@@ -15,6 +15,7 @@
 @testable import HTTP
 import XCTest
 
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 private struct TestMiddleware: Middleware {
     func process(request: inout HTTPRequest) async throws {
         request.body?.reverse()
@@ -27,6 +28,7 @@ private struct TestMiddleware: Middleware {
     }
 }
 
+@available(iOS 13, macOS 10.15, watchOS 6, tvOS 13, *)
 final class MiddlewareTests: XCTestCase {
     var url: URL!
     private let middleware = TestMiddleware()
