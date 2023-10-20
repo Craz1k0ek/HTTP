@@ -1,5 +1,3 @@
-// swift-tools-version: 5.9
-
 //  Copyright 2023 Thinkerium
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,19 +12,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import PackageDescription
+import Foundation
 
-let package = Package(
-    name: "HTTP",
-    products: [
-        .library(name: "HTTP", targets: ["HTTP"]),
-    ],
-    targets: [
-        .target(name: "HTTP"),
-        .testTarget(name: "HTTPTests", dependencies: ["HTTP"]),
-
-        .target(name: "HTTPExtra", dependencies: ["HTTP"]),
-        .testTarget(name: "HTTPExtraTests", dependencies: ["HTTPExtra"]),
-    ]
-)
-
+extension URL {
+    /// Create the URL from a `String` known at compile time.
+    ///
+    /// - Parameter staticString: The URL string.
+    /// - important: The developer is responsible for providing a valid and correct string.
+    public init(_ staticString: StaticString) {
+        self.init(string: "\(staticString)")!
+    }
+}

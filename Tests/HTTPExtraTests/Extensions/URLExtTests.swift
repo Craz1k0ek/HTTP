@@ -1,5 +1,3 @@
-// swift-tools-version: 5.9
-
 //  Copyright 2023 Thinkerium
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,19 +12,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import PackageDescription
+@testable import HTTPExtra
+import XCTest
 
-let package = Package(
-    name: "HTTP",
-    products: [
-        .library(name: "HTTP", targets: ["HTTP"]),
-    ],
-    targets: [
-        .target(name: "HTTP"),
-        .testTarget(name: "HTTPTests", dependencies: ["HTTP"]),
-
-        .target(name: "HTTPExtra", dependencies: ["HTTP"]),
-        .testTarget(name: "HTTPExtraTests", dependencies: ["HTTPExtra"]),
-    ]
-)
-
+final class URLExtTests: XCTestCase {
+    func testStaticString() {
+        let url = URL("https://www.thinkerium.com/")
+        XCTAssertEqual(url.absoluteString, "https://www.thinkerium.com/")
+    }
+}

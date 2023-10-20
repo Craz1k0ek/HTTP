@@ -1,5 +1,3 @@
-// swift-tools-version: 5.9
-
 //  Copyright 2023 Thinkerium
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,19 +12,18 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import PackageDescription
+import Foundation
+import HTTP
 
-let package = Package(
-    name: "HTTP",
-    products: [
-        .library(name: "HTTP", targets: ["HTTP"]),
-    ],
-    targets: [
-        .target(name: "HTTP"),
-        .testTarget(name: "HTTPTests", dependencies: ["HTTP"]),
-
-        .target(name: "HTTPExtra", dependencies: ["HTTP"]),
-        .testTarget(name: "HTTPExtraTests", dependencies: ["HTTPExtra"]),
-    ]
-)
-
+extension HTTPRequest {
+    /// The request as `URLRequest`.
+    var urlRequest: URLRequest {
+        var request = URLRequest(url: url, timeoutInterval: timeout)
+        request.httpMethod = method.rawValue
+        headers.forEach { header in
+            request.setValue(header.value, forHTTPHeaderField: header.name)
+        }
+        request.httpBody = body
+        return request
+    }
+}
