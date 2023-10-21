@@ -19,7 +19,7 @@ import PackageDescription
 let package = Package(
     name: "HTTP",
     products: [
-        .library(name: "HTTP", targets: ["HTTP"]),
+        .library(name: "HTTP", targets: ["HTTP", "HTTPExtra"]),
     ],
     targets: [
         .target(name: "HTTP"),
