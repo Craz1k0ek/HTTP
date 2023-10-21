@@ -19,7 +19,7 @@ Some of the `URLSession` objects have been made available for use by the `HTTPSe
 Both the `URL` object as well as the `URLRequest` object are now conform `HTTPRequestConvertible`.
 This allows you to easily get started with the HTTP package, wihtout major changes.
 
-For the responses we've wrapped both `Data` and `String`. 
+For the responses we've made both `Data` and `String` conform to `HTTPResponseConvertible`. 
 The latter one attempts to use the text encoding of the response during decoding.
 If the encoding is missing, UTF-8 is assumed.
 
